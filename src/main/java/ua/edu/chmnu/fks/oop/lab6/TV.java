@@ -7,6 +7,8 @@ public class TV extends ElectricalAppliance {
     private int resolution;
     private int contrast;
 
+    public TV(){}
+
     public TV(double voltage, double power, String material, int brightness, int resolution, int contrast) throws NegativeValueException {
         super(voltage, power, material);
         this.brightness = brightness;

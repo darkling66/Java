@@ -2,72 +2,65 @@ package ua.edu.chmnu.fks.oop.lab9;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lab9 {
-    private static List<Integer> list = new ArrayList<>();
+    private static ArrayList<Integer> list = new ArrayList<>();
 
-    public static void main(String[] args) throws IOException {
-        File from = new File("D:\\Documents\\NetBeansProjects\\OOP-2k-master\\src\\main\\java\\ua\\edu\\chmnu\\fks\\oop\\Rin\\lab9\\from.txt");
-        File to = new File("D:\\Documents\\NetBeansProjects\\OOP-2k-master\\src\\main\\java\\ua\\edu\\chmnu\\fks\\oop\\Rin\\lab9\\to.txt");
+    public static void main(String[] args){
+        File from = new File("D:\\Documents\\NetBeansProjects\\OOP-2k-master\\src\\main\\java\\ua\\edu\\chmnu\\fks\\oop\\lab9\\from.txt");
+        File to = new File("D:\\Documents\\NetBeansProjects\\OOP-2k-master\\src\\main\\java\\ua\\edu\\chmnu\\fks\\oop\\lab9\\to.txt");
 
-        //openFile(from, to);
-
-        int c = 0;
-        BufferedReader reader = new BufferedReader(new FileReader(new File(String.valueOf(from))));
-
-        while ((c = reader.read()) != -1) {
-            list.add(c);
-        }
-
-        reader.close();
-
-        Writer writer = new FileWriter(to);
-        for (int line : list) {
-            if(isSimple(line)) {
-                writer.write(line);
-            }
-//                тут мог бы быть пробел если надо в одну строку
-            writer.write(System.getProperty("line.separator"));
-        }
-        writer.flush();
-        if (writer != null) {
-            writer.close();
-        }
+        readFromFile(from);
+        writeInFile(to);
     }
 
-
-    public static boolean isSimple(int k) {
-        if (k % 2 == 0 && k != 2) {
-            return false;
-        }
-        int maxDiv = (int) Math.sqrt(k);
-        for (int i = 3; i <= maxDiv; i += 2) {
-            if (k % i == 0) {
-                return false;
+    public static ArrayList<Integer> readFromFile(File from){
+        String line = null;
+        try {
+            FileReader fileReader = new FileReader(from);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while ((line = bufferedReader.readLine()) != null) {
+                list.add(Integer.valueOf(line));
             }
+            fileReader.close();
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static ArrayList<Integer> writeInFile(File to) {
+        ArrayList<Integer> filteredList = new ArrayList<>();
+        try(FileWriter recorder = new FileWriter(to)) {
+            filteredList = (ArrayList<Integer>) list.stream()
+                    .filter(c -> isSimple(c))
+                    .collect(Collectors.toList());
+            String line1 = filteredList.toString();
+            for(char x : line1.toCharArray()) {
+                recorder.write(x);
+            }
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
+        return filteredList;
+    }
+
+    public static boolean isSimple(int i) {
+        if (i<=1)
+            return false;
+        else if (i <=3)
+            return true;
+        else if (i%2==0 || i %3 ==0)
+            return false;
+        int n = 5;
+        while (n*n <=i){
+            if (i % n ==0 || i % (n+2) == 0)
+                return false;
+            n=n+6;
         }
         return true;
     }
-
-    /*static void openFile(File from, File to) throws IOException {
-        int c = 0;
-        FileReader reader = new FileReader(from);
-        // читаем посимвольно
-        while((c=reader.read())!=-1){
-            Scanner scan = new Scanner(from);
-            ArrayList<Integer> list = new ArrayList<>();
-            list.add(scan.nextInt());
-            System.out.print(list);
-        }
-
-        FileWriter writer = new FileWriter(to, false);
-        if(isSimple(c)) {
-            writer.write((char)c);
-        }
-        writer.append('\n');
-        writer.flush();
-    }*/
-
-
 }
+

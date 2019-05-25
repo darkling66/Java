@@ -3,7 +3,7 @@ package ua.edu.chmnu.fks.oop.Lab4;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static ua.edu.chmnu.fks.oop.Rin.lab4.Lab4.mergeSort;
+import static ua.edu.chmnu.fks.oop.lab4.Lab4.mergeSort;
 
 public class Lab4_Test {
 

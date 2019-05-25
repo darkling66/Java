@@ -6,6 +6,8 @@ public class Teapot extends ElectricalAppliance{
     private int holdingCapacity;
     private String heatingElementType;
 
+    public Teapot(){}
+
     public Teapot(double voltage, double power, String material, int holdingCapacity, String heatingElementType) throws NegativeValueException {
         super(voltage, power, material);
 

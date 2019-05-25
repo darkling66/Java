@@ -1,7 +1,7 @@
 package ua.edu.chmnu.fks.oop.Lab5;
 
 import org.junit.jupiter.api.Test;
-import ua.edu.chmnu.fks.oop.Rin.lab5.Cube;
+import ua.edu.chmnu.fks.oop.lab5.Cube;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

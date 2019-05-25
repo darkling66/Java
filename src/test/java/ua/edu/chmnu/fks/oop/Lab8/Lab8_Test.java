@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static ua.edu.chmnu.fks.oop.Rin.lab8.Lab8.getPalindrome;
-import static ua.edu.chmnu.fks.oop.Rin.lab8.Lab8.isPalindrome;
+import static ua.edu.chmnu.fks.oop.lab8.Lab8.getPalindrome;
+import static ua.edu.chmnu.fks.oop.lab8.Lab8.isPalindrome;
 
 public class Lab8_Test {
 

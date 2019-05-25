@@ -7,6 +7,8 @@ public class Conditioner extends ElectricalAppliance{
     private int soundPressure;
     private int coolingPower;
 
+    public Conditioner(){}
+
     public Conditioner(double voltage, double power, String material, int energyEfficiency, int soundPressure, int coolingPower) throws NegativeValueException {
         super(voltage, power, material);
 

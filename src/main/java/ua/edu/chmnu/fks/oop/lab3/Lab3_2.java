@@ -1,28 +1,33 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ua.edu.chmnu.fks.oop.lab3;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
-
-public class Lab3_1 {
+/**
+ *
+ * @author User
+ */
+public class Lab3_2 {
     public static void main(String[] args) {
-        int[] mas = {5, 2, 4, 6, 1, 3};
-        print(mas);
-        System.out.println("");
-        inverse(mas);
-        print(mas);
+        int n = 3;
+        int [][] matrix = new int [n][n];
+        System.out.println("Было");
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                matrix[i][j] = (int)(Math.random() * 10);
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println("");
+        }
+        System.out.println("Стало");
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++){
+                System.out.print(matrix[j][i] + " ");
+            }
+            System.out.println("");
+        }
     }
 
-    private static void inverse(int[] mas){
-        for (int i = 0; i < mas.length / 2; i++) {
-            int tmp = mas[i];
-            mas[i] = mas[mas.length - i - 1];
-            mas[mas.length - i - 1] = tmp;
-        }
-    }
-    private static void print(int[] mas){
-        for(int i = 0; i < mas.length; i++){
-            System.out.print(mas[i] + " ");
-        }
-    }
 }

@@ -1,7 +1,7 @@
 package ua.edu.chmnu.fks.oop.Lab7;
 
 import org.junit.jupiter.api.Test;
-import ua.edu.chmnu.fks.oop.Rin.lab7.Average;
+import ua.edu.chmnu.fks.oop.lab7.Average;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
